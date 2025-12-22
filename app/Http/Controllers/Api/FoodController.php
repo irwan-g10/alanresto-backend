@@ -29,19 +29,23 @@ class FoodController extends Controller
     public function store(Request $request)
     {
         // Validasi input
-        $validated = $request->validate([
-            'name'  => 'required|string|max:255',
-            'price' => 'required|integer|min:0', // pakai integer saja
-            'image' => 'nullable|string',        // hanya path / nama file
-        ]);
+        $validated = $request->validate(
+            [
+                'name'  => 'required|string|max:255',
+                'price' => 'required|integer|min:0', // pakai integer saja
+                'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:10240',
+            ],
+        );
 
-        // Simpan ke database
+
+        // Simpan file gambar
+        $validated['image'] = $request->file('image')->store('foods', 'public');
+
         $food = Food::create($validated);
 
-        // Return JSON response
         return response()->json([
             'success' => true,
-            'data'    => $food,
+            'data' => $food
         ], 201);
     }
 

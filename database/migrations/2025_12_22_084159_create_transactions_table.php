@@ -16,6 +16,9 @@ return new class extends Migration
             $table->id();
 
             $table->foreignIdFor(Transaction::class);
+            $table->integer('quantity');
+            $table->integer('total_price');
+            $table->integer('payment_amount');
             $table->timestamps();
         });
     }
