@@ -44,14 +44,14 @@ class FoodController extends Controller
 
 
         // Simpan file gambar
-        $validated['image'] = $request->file('image')->store('foods', 'public');
+        $validated['image'] = $request->file('image')->store('/', 'public');
 
         $food = Food::create($validated);
 
-        return response()->json([
+        return (new FoodResource($food))->additional([
             'success' => true,
-            'data' => $food
-        ], 201);
+            'message' => 'Detail makanan berhasil diambil',
+        ]);
     }
 
 
@@ -70,11 +70,10 @@ class FoodController extends Controller
             ], 404);
         }
 
-        // Return data dengan status 200 OK
-        return response()->json([
+        return (new FoodResource($food))->additional([
             'success' => true,
-            'data' => $food
-        ], 200);
+            'message' => 'Detail makanan berhasil diambil',
+        ]);
     }
 
     /**

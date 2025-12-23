@@ -1,4 +1,3 @@
 *
 !.gitignore
-!foods/
-!foods/sample_image.webp
+!sample_image.webp
