@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FoodResource;
 use App\Models\Food;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,13 @@ class FoodController extends Controller
         $foods = Food::all();
 
         // Return JSON response dengan struktur konsisten
-        return response()->json([
+        // return response()->json([
+        //     'success' => true,
+        //     'data'    => $foods,
+        // ]);
+        return FoodResource::collection($foods)->additional([
             'success' => true,
-            'data'    => $foods,
+            'message' => 'Daftar makanan berhasil diambil',
         ]);
     }
 
@@ -32,7 +37,7 @@ class FoodController extends Controller
         $validated = $request->validate(
             [
                 'name'  => 'required|string|max:255',
-                'price' => 'required|integer|min:0', // pakai integer saja
+                'price' => 'required|integer|min:0',
                 'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:10240',
             ],
         );

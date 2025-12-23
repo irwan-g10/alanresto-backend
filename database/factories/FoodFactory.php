@@ -19,7 +19,7 @@ class FoodFactory extends Factory
         return [
             'name' => fake()->sentence(2),
             'price' => fake()->numberBetween(2, 200) * 500,
-            'image' => 'sample/sample_image.webp',
+            'image' => '/sample_image.webp',
         ];
     }
 }
