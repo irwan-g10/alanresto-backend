@@ -19,5 +19,5 @@ yarn-error.log
 /.vscode
 
 
-!storage/app/public/sample/
-!storage/app/public/sample/*
+!storage/app/public/foods/
+!storage/app/public/foods/sample_image.webp
