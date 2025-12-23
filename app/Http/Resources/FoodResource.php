@@ -17,7 +17,7 @@ class FoodResource extends JsonResource
         return [
         'id' => $this->id,
         'name' => $this->name,
-        'harga' => $this->price,
+        'price' => $this->price,
         'image' => asset('storage/' . $this->image),
     ];
     }
