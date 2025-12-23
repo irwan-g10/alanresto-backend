@@ -17,7 +17,9 @@ class FoodFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->sentence(2),
+            'price' => fake()->numberBetween(2, 200) * 500,
+            'image' => 'sample/sample_image.webp',
         ];
     }
 }
