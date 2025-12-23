@@ -38,7 +38,7 @@ class FoodController extends Controller
             [
                 'name'  => 'required|string|max:255',
                 'price' => 'required|integer|min:0',
-                'image' => 'required|image',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
             ],
         );
 
